@@ -1,0 +1,23 @@
+[project]
+name = "admin"
+version = "1.0.0"
+description = "The Mangrove prediction and data management."
+dependencies = [
+    "flask",
+    "Pillow",
+    "flask-restx",
+    "tensorflow",
+    "numpy",
+    "gunicorn",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["admin"]
