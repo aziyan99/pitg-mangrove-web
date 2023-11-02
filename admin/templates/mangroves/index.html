@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Mangroves{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('mangroves.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for mangrove in mangroves %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ mangrove['title'] }}</h1>
+          <div class="about">on {{ mangrove['created_at'].strftime('%Y-%m-%d') }} with data id {{ mangrove['data_id'] }}</div>
+        </div>
+        <a class="action" href="{{ url_for('mangroves.update', id=mangrove['id']) }}">Edit</a>
+      </header>
+      <p class="body">{{ mangrove['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

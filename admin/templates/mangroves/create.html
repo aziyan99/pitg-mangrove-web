@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Mangrove{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+
+      <label for="title">Title</label>
+      <input name="title" id="title" value="{{ request.form['title'] }}" required>
+
+      <label for="data_id">Data ID</label>
+      <input type="number" name="data_id" id="data_id" value="{{ request.form['data_id'] }}" required>
+
+      <label for="banner_path">Banner URL</label>
+      <input name="banner_path" id="banner_path" value="{{ request.form['banner_path'] }}" required>
+
+      <label for="body">Body</label>
+      <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+
+      <input type="submit" value="Save">
+      <a href="{{ url_for('mangroves.index') }}">Cancel</a>
+  </form>
+{% endblock %}
